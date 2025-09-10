@@ -1,0 +1,261 @@
+### add movie
+POST http://localhost:1337/api/movies
+Content-Type: application/json
+
+{
+    "data": {
+        "title": "Gladiator II",
+        "description": "Vive les gladiateurs !!!",
+        "releaseDate":"2024-08-11"
+    }
+}
+
+### add movie
+POST http://localhost:1337/api/movies
+Content-Type: application/json
+
+{
+  "data": {
+    "title": "Le dernier étage",
+    "description": "Combat dans un immeuble pour affronter un boss final",
+    "releaseDate" : "2004-09-20"
+  }
+}
+
+### add movie
+POST http://localhost:1337/api/movies
+Content-Type: application/json
+
+{
+  "data": {
+    "title": "Bienvenue chez les Johnson",
+    "description": "Et si cette famille d'apparence si parfaite caché un sombre secret...",
+    "releaseDate" : "2019-06-03"
+  }
+}
+
+### add movie
+POST http://localhost:1337/api/movies
+Content-Type: application/json
+
+{
+  "data": {
+    "title": "Fast & Furious: La revisite",
+    "description": "Les voitures ça vole !!!",
+    "releaseDate" : "2028-07-26"
+  }
+}
+
+### add movie
+POST http://localhost:1337/api/movies
+Content-Type: application/json
+
+{
+  "data": {
+    "title": "A la recherche du trésor",
+    "description": "Un bateau pirate s'amarre sur une île déserte afin de retrouver la cité perdue de l'Atlantide",
+    "releaseDate" : "2015-10-18"
+  }
+}
+
+### add movie
+POST http://localhost:1337/api/movies
+Content-Type: application/json
+
+{
+  "data": {
+    "title": "On a perdu le lapin de Pâques",
+    "description": "Lors de la chasse des oeufs de Pâques, les enfants ne trouvent plus d'oeufs...",
+    "releaseDate" : "2008-03-15"
+  }
+}
+
+### add movie
+POST http://localhost:1337/api/movies
+Content-Type: application/json
+
+{    
+  "data": {
+    "title": "Le Père Noël est le méchant",
+    "description": "Et si le père Noël n'était pas le gentil mais le méchant de l'histoire...",
+    "releaseDate" : "1998-12-25"
+  }
+}
+
+### add movie
+POST http://localhost:1337/api/movies
+Content-Type: application/json
+
+{
+  "data": {
+    "title": "Mise à jour de sécurité",
+    "description": "Connaissez-vous vraiment les dessous de la cybersécurité ?",
+    "releaseDate" : "1902-05-30"
+  }
+}
+
+### movies view
+GET http://localhost:1337/api/movies
+Content-Type: application/json
+
+### modifier movies
+PUT http://localhost:1337/api/movies/2
+Content-Type: application/json
+
+{
+    "data": {
+        "title": "Gladiator II",
+        "description": "Vive les gladiateurs !!!",
+        "releaseDate":"2024-08-11"
+    }
+}
+
+### delete movie
+DELETE http://localhost:1337/api/movies/1
+
+
+### Actors view
+GET http://localhost:1337/api/actors
+
+
+### Actors add
+POST http://localhost:1337/api/actors
+Content-Type: application/json
+
+{
+    "data":{
+        "name" : "Mescal",
+        "prenom" : "Paul"
+    }
+}
+
+### Actors add
+POST http://localhost:1337/api/actors
+Content-Type: application/json
+
+{
+    "data":{
+        "name" : "Washington",
+        "prenom" : "Denzel"
+    }
+}
+
+
+### Actors add
+POST http://localhost:1337/api/actors
+Content-Type: application/json
+
+{
+    "data":{
+        "name" : "Willis",
+        "prenom" : "Bruce"
+    }
+}
+
+### Actors add
+POST http://localhost:1337/api/actors
+Content-Type: application/json
+
+{
+    "data":{
+        "name" :"Nielsen",
+        "prenom" : "Connie"
+    }
+}
+
+
+### Actors add
+POST http://localhost:1337/api/actors
+Content-Type: application/json
+
+{
+    "data":{
+        "name" : "Quinn",
+        "prenom" : "Joseph"
+    }
+}
+
+### Actors add
+POST http://localhost:1337/api/actors
+Content-Type: application/json
+
+{
+    "data":{
+        "name" : "Diesel",
+        "prenom" : "Vin"
+    }
+}
+
+### Actors add
+POST http://localhost:1337/api/actors
+Content-Type: application/json
+
+{
+    "data":{
+        "name" : "Johnson",
+        "prenom" : "Dwayne"
+    }
+}
+
+### Actors add
+POST http://localhost:1337/api/actors
+Content-Type: application/json
+
+{
+    "data":{
+        "name" : "Depp",
+        "prenom" : "Johnny"
+    }
+}
+
+
+### modifier actors
+PUT http://localhost:1337/api/actors/2
+Content-Type: application/json
+
+{
+    "data":{
+        "name" : "Depp",
+        "prenom" : "Johnny"
+    }
+}
+
+### Actors delete
+DELETE http://localhost:1337/api/actors/yfn0xl9wqkny5ny9i4sysuze
+
+
+
+### 
+POST http://localhost:1337/api/auth/register
+Content-Type: application/json
+
+{
+    "data":{
+        "pseudo": "Kapman",
+
+        "email": "test@test.com",
+
+        "mdp": "Password"
+    }
+}
+
+
+### Create user
+POST http://localhost:1337/api/users
+Content-Type: application/json
+
+{
+     "data":{
+        "pseudo": "tata",
+        "email": "tata@test.com",
+        "mdp": "PWD"
+    }
+}
+
+### View user
+GET http://localhost:1337/api/users
+Authorization: BASIC tata:PWD
+
+### Delete user
+DELETE http://localhost:1337/api/users/2
+Authorization: BASIC tata:PWD

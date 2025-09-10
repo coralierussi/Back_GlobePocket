@@ -1,0 +1,61 @@
+### Auth
+POST http://localhost:1337/api/auth/local
+Content-Type: application/json
+
+{
+    "name": "tester@gmail.com",
+    "mdp": "tester"
+}
+
+### User
+POST http://localhost:1337/api/users
+Content-Type: application/json
+
+{
+    "name" : "tester",
+    "mdp": "tester"
+}
+
+### User
+GET http://localhost:1337/api/users
+
+### Classe
+POST http://localhost:1337/api/classes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoidGVzdGVyQGdtYWlsLmNvbSIsIm5hbWUiOiJ0ZXN0ZXIiLCJtZHAiOiIkMmIkMTAkbVJ5cFY3S3d6bUx4eDA4MVhrc0NodVY3WjBzQVJtU3hOYnFKdmtiMTdQMDZNeVpZaWZ5SHkiLCJpYXQiOjE3Mzg4MzcwMjh9.reIRbfQnAnOnoXZaFiT5PyTBXwDZo6yTs_JCmafyHzA
+
+{
+     "name" : "B3 dev"
+}
+
+### Classe
+GET http://localhost:1337/api/classes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoidGVzdGVyQGdtYWlsLmNvbSIsIm5hbWUiOiJ0ZXN0ZXIiLCJtZHAiOiIkMmIkMTAkbVJ5cFY3S3d6bUx4eDA4MVhrc0NodVY3WjBzQVJtU3hOYnFKdmtiMTdQMDZNeVpZaWZ5SHkiLCJpYXQiOjE3Mzg4MzcwMjh9.reIRbfQnAnOnoXZaFiT5PyTBXwDZo6yTs_JCmafyHzA
+
+### Eleve
+POST http://localhost:1337/api/eleves
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoidGVzdGVyQGdtYWlsLmNvbSIsIm5hbWUiOiJ0ZXN0ZXIiLCJtZHAiOiIkMmIkMTAkbVJ5cFY3S3d6bUx4eDA4MVhrc0NodVY3WjBzQVJtU3hOYnFKdmtiMTdQMDZNeVpZaWZ5SHkiLCJpYXQiOjE3Mzg4MzcwMjh9.reIRbfQnAnOnoXZaFiT5PyTBXwDZo6yTs_JCmafyHzA
+
+{
+    "name" : "userTest",
+    "classeId": 2
+}
+
+### Eleve
+GET http://localhost:1337/api/eleves
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoidGVzdGVyQGdtYWlsLmNvbSIsIm5hbWUiOiJ0ZXN0ZXIiLCJtZHAiOiIkMmIkMTAkbVJ5cFY3S3d6bUx4eDA4MVhrc0NodVY3WjBzQVJtU3hOYnFKdmtiMTdQMDZNeVpZaWZ5SHkiLCJpYXQiOjE3Mzg4MzcwMjh9.reIRbfQnAnOnoXZaFiT5PyTBXwDZo6yTs_JCmafyHzA
+
+
+### Groupe
+POST http://localhost:1337/api/groupes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoidGVzdGVyQGdtYWlsLmNvbSIsIm5hbWUiOiJ0ZXN0ZXIiLCJtZHAiOiIkMmIkMTAkbVJ5cFY3S3d6bUx4eDA4MVhrc0NodVY3WjBzQVJtU3hOYnFKdmtiMTdQMDZNeVpZaWZ5SHkiLCJpYXQiOjE3Mzg4MzcwMjh9.reIRbfQnAnOnoXZaFiT5PyTBXwDZo6yTs_JCmafyHzA
+
+{
+    "name" : "tataGroupe"
+}
+
+### Groupe
+GET http://localhost:1337/api/groupes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoidGVzdGVyQGdtYWlsLmNvbSIsIm5hbWUiOiJ0ZXN0ZXIiLCJtZHAiOiIkMmIkMTAkbVJ5cFY3S3d6bUx4eDA4MVhrc0NodVY3WjBzQVJtU3hOYnFKdmtiMTdQMDZNeVpZaWZ5SHkiLCJpYXQiOjE3Mzg4MzcwMjh9.reIRbfQnAnOnoXZaFiT5PyTBXwDZo6yTs_JCmafyHzA

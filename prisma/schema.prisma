@@ -1,0 +1,223 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/**
+ * ===== ENUMS =====
+ */
+
+enum Sexe {
+  Masculin
+  Feminin
+  Autre
+}
+
+enum Statut {
+  Confirme
+  Attente
+  Annule
+}
+
+enum Type {
+  Transports
+  Hebergements
+  Activites
+  Locations
+}
+
+enum Role {
+  Admin
+  Membre
+}
+
+enum Type_Appel {
+  Audio
+  Video
+}
+
+/**
+ * ===== MODELS =====
+ */
+
+model User {
+  id                Int       @id @default(autoincrement())
+  cp                Int?
+  compte_bancaire   Int?
+  name              String
+  email             String    @unique
+  mdp               String
+  pseudo            String?
+  ville             String?
+  pays              String?
+  date_inscription  DateTime  @default(now())
+  date_anniversaire DateTime?
+  sexe              Sexe
+
+  // Relations
+  reservations    Reservation[]
+  avis            Avis[]
+  voyages         User_Voyage[]
+  messages        Message[]
+  reactions       Reaction[]
+  membres_equipes Membre_Equipe[]
+}
+
+model Voyage {
+  id          Int      @id @default(autoincrement())
+  prix        Int
+  destination String
+  date_depart DateTime
+  date_retour DateTime
+  type        Type
+  nouveaute   Boolean  @default(false)
+
+  // Relations
+  reservations Reservation[]
+  avis         Avis[]
+  participants User_Voyage[]
+}
+
+model Avis {
+  id               Int      @id @default(autoincrement())
+  note             Int
+  commentaire      String?
+  date_publication DateTime @default(now())
+
+  // Foreign Keys
+  userId   Int
+  voyageId Int
+
+  // Relations
+  user   User   @relation(fields: [userId], references: [id])
+  voyage Voyage @relation(fields: [voyageId], references: [id])
+}
+
+model User_Voyage {
+  id         Int     @id @default(autoincrement())
+  coup_coeur Boolean @default(false)
+
+  // Foreign Keys
+  userId   Int
+  voyageId Int
+
+  // Relations
+  user   User   @relation(fields: [userId], references: [id])
+  voyage Voyage @relation(fields: [voyageId], references: [id])
+
+  @@unique([userId, voyageId])
+}
+
+model Message {
+  id         Int      @id @default(autoincrement())
+  message    String
+  date_envoi DateTime @default(now())
+
+  // Foreign Key
+  userId Int
+
+  // Relations
+  user      User           @relation(fields: [userId], references: [id])
+  pieces    Piece_Jointe[]
+  reactions Reaction[]
+}
+
+model Piece_Jointe {
+  id           Int    @id @default(autoincrement())
+  url_fichier  String
+  type_fichier String
+
+  // Foreign Key
+  messageId Int
+
+  // Relations
+  message Message @relation(fields: [messageId], references: [id])
+}
+
+model Reaction {
+  id    Int    @id @default(autoincrement())
+  emoji String
+
+  // Foreign Keys
+  messageId Int
+  userId    Int
+
+  // Relations
+  message Message @relation(fields: [messageId], references: [id])
+  user    User    @relation(fields: [userId], references: [id])
+
+  @@unique([messageId, userId, emoji])
+}
+
+model Reservation {
+  id               Int      @id @default(autoincrement())
+  date_reservation DateTime @default(now())
+  statut           Statut
+
+  // Foreign Keys
+  userId   Int
+  voyageId Int
+
+  // Relations
+  user   User   @relation(fields: [userId], references: [id])
+  voyage Voyage @relation(fields: [voyageId], references: [id])
+
+  @@index([userId])
+  @@index([voyageId])
+}
+
+model Equipe {
+  id            Int      @id @default(autoincrement())
+  nom           String
+  description   String?
+  date_creation DateTime @default(now())
+
+  // Relations
+  membres      Membre_Equipe[]
+  equipeAppels Equipe_Appel[]
+}
+
+model Membre_Equipe {
+  id   Int  @id @default(autoincrement())
+  role Role
+
+  // Foreign Keys
+  userId   Int
+  equipeId Int
+
+  // Relations
+  user   User   @relation(fields: [userId], references: [id])
+  equipe Equipe @relation(fields: [equipeId], references: [id])
+
+  @@unique([userId, equipeId])
+  @@index([equipeId])
+}
+
+model Appel {
+  id         Int        @id @default(autoincrement())
+  date_debut DateTime
+  date_fin   DateTime
+  type_appel Type_Appel
+
+  // Relations
+  equipeAppels Equipe_Appel[]
+}
+
+model Equipe_Appel {
+  id Int @id @default(autoincrement())
+
+  // Foreign Keys
+  equipeId Int
+  appelId  Int
+
+  // Relations
+  equipe Equipe @relation(fields: [equipeId], references: [id])
+  appel  Appel  @relation(fields: [appelId], references: [id])
+
+  @@unique([equipeId, appelId])
+  @@index([appelId])
+}
