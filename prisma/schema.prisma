@@ -40,6 +40,31 @@ enum Type_Appel {
   Video
 }
 
+enum Heure {
+  H08_00 @map("08:00")
+  H08_30 @map("08:30")
+  H09_00 @map("09:00")
+  H09_30 @map("09:30")
+  H10_00 @map("10:00")
+  H10_30 @map("10:30")
+  H11_00 @map("11:00")
+  H11_30 @map("11:30")
+  H12_00 @map("12:00")
+  H12_30 @map("12:30")
+  H13_00 @map("13:00")
+  H13_30 @map("13:30")
+  H14_00 @map("14:00")
+  H14_30 @map("14:30")
+  H15_00 @map("15:00")
+  H15_30 @map("15:30")
+  H16_00 @map("16:00")
+  H16_30 @map("16:30")
+  H17_00 @map("17:00")
+  H17_30 @map("17:30")
+  H18_00 @map("18:00")
+  H18_30 @map("18:30")
+}
+
 /**
  * ===== MODELS =====
  */
@@ -61,8 +86,6 @@ model User {
   documents        String[]
   description     String?
 
-  // rendez_vous      DateTime[]
-  // Galerie et documents string ????
 
   // Relations
   reservations    Reservation[]
@@ -71,6 +94,19 @@ model User {
   messages        Message[]
   reactions       Reaction[]
   membres_equipes Membre_Equipe[]
+  rendez_vous Rendez_Vous[]
+}
+model Rendez_Vous {
+  id         Int      @id @default(autoincrement())
+  date_rdv   DateTime
+  heure      Heure
+  titre      String
+
+  // Foreign Key
+  userId Int
+
+  // Relations
+  user User @relation(fields: [userId], references: [id])
 }
 
 model Voyage {
