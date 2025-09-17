@@ -57,6 +57,12 @@ model User {
   date_inscription  DateTime  @default(now())
   date_anniversaire DateTime?
   sexe              Sexe
+  galerie          String[]
+  documents        String[]
+  description     String?
+
+  // rendez_vous      DateTime[]
+  // Galerie et documents string ????
 
   // Relations
   reservations    Reservation[]
