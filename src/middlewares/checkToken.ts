@@ -21,6 +21,7 @@ export async function checkToken (req: Request, res: Response, next: NextFunctio
                 const decoded = jwt.verify(token, process.env.JWT_SECRET!)
                 if (decoded) {
                     console.log('decoded', decoded);
+                    req.userId = (decoded as { userId: number }).userId;
                     next()
                 }
             }

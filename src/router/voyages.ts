@@ -27,3 +27,14 @@ voyagesRouter.get('/', async (req: Request, res: Response) => {
   res.json(voyages);
 });
 
+
+voyagesRouter.get('/user', checkToken, async (req: Request, res: Response) => {
+  const voyages = await prisma.voyage.findMany({
+    where: {
+        participants: {
+            some: { id: req.userId }
+        }
+    }
+  });
+  res.json(voyages);
+});
