@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 import { Router } from "express";
-const router = Router();
+export const userRouter = Router();
 // import bcrypt from "bcrypt";
 
 
-// usersRouter.post('/', async (req, res) => {
+// userRouter.post('/', async (req, res) => {
 //   const { email, mdp} = req.body;
 //   const hashMdp = await bcrypt.hash(
 //     mdp,
@@ -85,7 +85,7 @@ const router = Router();
 
 const prisma = new PrismaClient();
 
-router.post('/register', async (req: Request, res: Response) => {
+userRouter.post('/register', async (req: Request, res: Response) => {
   const { email, mdp, name, sexe }: { email: string; mdp: string; name: string; sexe: 'Homme' | 'Femme' | 'Autre' } = req.body;
 
   try {

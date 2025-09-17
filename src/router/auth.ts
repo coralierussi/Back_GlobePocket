@@ -3,13 +3,13 @@ import fetch from 'node-fetch';
 import jwt from 'jsonwebtoken';
 import { PrismaClient } from '@prisma/client';
 
-const router = express.Router();
+export const authRouter = express.Router();
 const prisma = new PrismaClient();
 
 const REMOTE_API_URL = 'https://globe-pocket-back.onrender.com/api/login';
 
 // --- LOGIN ---
-router.post('/login', async (req: Request, res: Response) => {
+authRouter.post('/login', async (req: Request, res: Response) => {
   const { email, mdp }: { email: string; mdp: string } = req.body;
 
   try {
@@ -36,7 +36,7 @@ router.post('/login', async (req: Request, res: Response) => {
 });
 
 // --- REGISTER ---
-router.post('/register', async (req: Request, res: Response) => {
+authRouter.post('/register', async (req: Request, res: Response) => {
   const { email, mdp, name, sexe }: { email: string; mdp: string; name: string; sexe: 'Homme' | 'Femme' | 'Autre' } = req.body;
 
   try {
@@ -57,4 +57,3 @@ router.post('/register', async (req: Request, res: Response) => {
   }
 });
 
-export default router;
