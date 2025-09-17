@@ -16,7 +16,6 @@ export async function checkToken (req: Request, res: Response, next: NextFunctio
             res.status(401).send("Invalid token type");
         }
         else {
-            const token = (req.headers.authorization || '').split(' ')[1] || ''
             try {
                 console.log('token', token)
                 const decoded = jwt.verify(token, process.env.JWT_SECRET!)

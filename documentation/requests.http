@@ -1,5 +1,6 @@
 # Create a variable to store the url
 @apiUrl = http://localhost:1337/api
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc1ODEwMDk3OCwiZXhwIjoxNzU4MTg3Mzc4fQ.yGFY7NCXNtjFFxYLQfyY_npsItqzdkw99o0TGUZtwDg
 
 ### création compte
 POST {{apiUrl}}/auth/register
@@ -19,3 +20,20 @@ Content-Type: application/json
   "email": "samohtegrofal@mds.com",
   "mdp": "d467èé%ha4jfx::+/t61fiùra2j9*"
 }
+
+### création voyage
+POST {{apiUrl}}/voyages
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "destination": "Tokyo",
+  "date_depart": "2024-12-20T00:00:00.000Z",
+  "date_retour": "2025-01-05T00:00:00.000Z",
+  "type": "Transports",
+  "prix": 3000
+}
+
+### liste voyages
+GET {{apiUrl}}/voyages
+Authorization: Bearer {{token}}

@@ -1,6 +1,7 @@
 import express, { Router } from 'express';
 import { userRouter } from './router/users';
 import { authRouter } from './router/auth';
+import { voyagesRouter } from './router/voyages';
 import cors from 'cors';
 import 'dotenv/config'
 
@@ -12,6 +13,7 @@ app.use(cors());
 const apiRouter = Router();
 apiRouter.use('/users', userRouter);
 apiRouter.use('/auth', authRouter);
+apiRouter.use('/voyages', voyagesRouter);
 
 app.use('/api', apiRouter);
 
