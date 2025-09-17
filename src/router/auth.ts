@@ -1,34 +1,34 @@
 import express, { Request, Response } from 'express';
-import fetch from 'node-fetch';
 import jwt from 'jsonwebtoken';
 import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcrypt';
+import 'dotenv/config'
 
 export const authRouter = express.Router();
 const prisma = new PrismaClient();
-
-const REMOTE_API_URL = 'https://globe-pocket-back.onrender.com/api/login';
 
 // --- LOGIN ---
 authRouter.post('/login', async (req: Request, res: Response) => {
   const { email, mdp }: { email: string; mdp: string } = req.body;
 
+  const hashedPassword = await bcrypt.hash(mdp, process.env.SALT_ROUNDS ? parseInt(process.env.SALT_ROUNDS) : 10);
+  
   try {
-    const apiResponse = await fetch(REMOTE_API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, mdp }),
-    });
+    const user = await prisma.user.findUnique({ where: { email } });
 
-    if (!apiResponse.ok) {
-      return res.status(401).json({ message: 'Identifiants invalides' });
+    if (!user) {
+      return res.status(401).json({ message: 'Email ou mot de passe incorrect.' });
     }
 
-    const result = await apiResponse.json();
+    const passwordMatch = await bcrypt.compare(mdp, user.mdp);
 
-    // Facultatif : générer un token local
-    const token = jwt.sign({ email }, 'SECRET_KEY');
+    if (!passwordMatch) {
+      return res.status(401).json({ message: 'Email ou mot de passe incorrect.' });
+    }
 
-    res.json({ token, user: result });
+    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, { expiresIn: '24h' });
+
+    res.status(200).json({ token });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Erreur serveur' });
@@ -37,7 +37,7 @@ authRouter.post('/login', async (req: Request, res: Response) => {
 
 // --- REGISTER ---
 authRouter.post('/register', async (req: Request, res: Response) => {
-  const { email, mdp, name, sexe }: { email: string; mdp: string; name: string; sexe: 'Homme' | 'Femme' | 'Autre' } = req.body;
+  const { email, mdp, name }: { email: string; mdp: string; name: string;} = req.body;
 
   try {
     const userExists = await prisma.user.findUnique({ where: { email } });
@@ -46,8 +46,10 @@ authRouter.post('/register', async (req: Request, res: Response) => {
       return res.status(409).json({ message: 'Utilisateur déjà inscrit.' });
     }
 
+    const hashedPassword = await bcrypt.hash(mdp, process.env.SALT_ROUNDS ? parseInt(process.env.SALT_ROUNDS) : 10);
+
     await prisma.user.create({
-      data: { email, mdp, name, sexe: 'Autre' },
+      data: { email, mdp: hashedPassword, name },
     });
 
     res.status(201).json({ message: 'Inscription réussie.' });

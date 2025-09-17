@@ -1,11 +1,21 @@
 # Create a variable to store the url
 @apiUrl = http://localhost:1337/api
 
-### Auth
+### création compte
 POST {{apiUrl}}/auth/register
 Content-Type: application/json
  
 {
   "email": "samohtegrofal@mds.com",
-  "password": "d467èé%ha4jfx::+/t61fiùra2j9*"
+  "mdp": "d467èé%ha4jfx::+/t61fiùra2j9*",
+  "name": "toto"
+}
+
+### login
+POST {{apiUrl}}/auth/login
+Content-Type: application/json
+ 
+{
+  "email": "samohtegrofal@mds.com",
+  "mdp": "d467èé%ha4jfx::+/t61fiùra2j9*"
 }

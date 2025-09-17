@@ -56,7 +56,7 @@ model User {
   pays              String?
   date_inscription  DateTime  @default(now())
   date_anniversaire DateTime?
-  sexe              Sexe
+  sexe              Sexe?
   galerie          String[]
   documents        String[]
   description     String?
