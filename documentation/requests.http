@@ -64,3 +64,18 @@ Content-Type: application/json
   "description": "Document important"
 }
 
+### liste rdv
+GET {{apiUrl}}/rdv
+Authorization: Bearer {{token}}
+
+### ajout rdv
+POST {{apiUrl}}/rdv
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "date_rdv": "2024-12-15T10:00:00.000Z",
+  "heure": "2024-12-15T10:00:00.000Z",
+  "titre": "Rendez-vous chez le médecin",
+  "mail": "samohtegrofal@mds.com"
+}
