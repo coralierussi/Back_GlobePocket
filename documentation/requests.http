@@ -37,3 +37,30 @@ Authorization: Bearer {{token}}
 ### liste voyages
 GET {{apiUrl}}/voyages/user
 Authorization: Bearer {{token}}
+
+### liste galerie par users
+GET {{apiUrl}}/users/1/photos
+
+
+### ajouter galerie
+POST {{apiUrl}}/users/1/photos
+Content-Type: application/json
+
+{
+  "url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQN4RJTrFs8g2czpTEQSVxRj3TS8nJo3tYC_pdF_cu3Rbtls5iuPYoDCyhdt1yxLY6WStReFUkJT9B9gECNAJ_1U66gJ7ffFtiVxCb_Y_YC",
+  "description": "Photo de chien"
+} 
+
+### liste documents par users
+GET {{apiUrl}}/users/1/documents
+Authorization: Bearer {{token}}
+
+### ajouter document
+POST {{apiUrl}}/users/1/documents
+Content-Type: application/json
+
+{
+  "url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQN4RJTrFs8g2czpTEQSVxRj3TS8nJo3tYC_pdF_cu3Rbtls5iuPYoDCyhdt1yxLY6WStReFUkJT9B9gECNAJ_1U66gJ7ffFtiVxCb_Y_YC",
+  "description": "Document important"
+}
+
