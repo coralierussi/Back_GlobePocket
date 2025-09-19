@@ -1,6 +1,6 @@
 # Create a variable to store the url
 @apiUrl = http://localhost:1337/api
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc1ODE5MzkxOSwiZXhwIjoxNzU4MjgwMzE5fQ.q_-9wKjpZ34INYXAyQOw4Elml-2KEf_YEFGFCfSLVn4
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc1ODI2ODA1NiwiZXhwIjoxNzU4MzU0NDU2fQ.qbSq6y32J9FwsEK9Ijwo4FmTj2k8yzu-BDmkFdVNXlg
 
 ### création compte
 POST {{apiUrl}}/auth/register
@@ -15,7 +15,7 @@ Content-Type: application/json
 ### login
 POST {{apiUrl}}/auth/login
 Content-Type: application/json
- 
+
 {
   "email": "samohtegrofal@mds.com",
   "mdp": "d467èé%ha4jfx::+/t61fiùra2j9*"
