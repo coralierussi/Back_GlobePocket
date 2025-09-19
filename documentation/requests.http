@@ -24,6 +24,27 @@ Content-Type: application/json
 ### get user info
 GET {{apiUrl}}/users
 
+### update user info
+PUT {{apiUrl}}/users
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "email": "samohtegrofal@mds.com",
+  "mdp": "d467èé%ha4jfx::+/t61fiùra2j9*",
+  "name": "Sam",
+  "pseudo": "Sam",
+  "ville": "Paris",
+  "pays": "France",
+  "date_anniversaire": "2025-01-05T00:00:00.000Z",
+  "sexe": "Feminin",
+  "galerie": [],
+  "documents": [],
+  "description": "Hello everybody !",
+  "cp": 75000,
+  "compte_bancaire": 123456789
+}
+
 ### création voyage
 POST {{apiUrl}}/voyages
 Content-Type: application/json
