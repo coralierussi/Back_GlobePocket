@@ -5,6 +5,12 @@ export const userRouter = express.Router();
 
 const prisma = new PrismaClient();
 
+userRouter.get("/", async (req: Request, res: Response) => {
+  const users = await prisma.user.findMany();
+  console.log("getting users");
+  res.json(users);
+});
+
 userRouter.get('/:userid/photos', async (req: Request, res: Response) => {
   const userId = req.params.userid;
   const param = await prisma.user.findUnique({
@@ -14,11 +20,12 @@ userRouter.get('/:userid/photos', async (req: Request, res: Response) => {
   res.json(param)
 })
 
-userRouter.put('/:userid/photos', async (req: Request, res: Response) => {
-  const userId = req.params.userid;
+userRouter.put('/photos', checkToken, async (req: Request, res: Response) => {
+  const userId = req.userId;
+
   const { galerie }: { galerie: string[] } = req.body;
   const param = await prisma.user.update({
-    where: { id: parseInt(userId) },
+    where: { id: userId },
     select: { galerie: true },
     data: { galerie }
   });

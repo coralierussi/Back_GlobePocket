@@ -21,6 +21,9 @@ Content-Type: application/json
   "mdp": "d467èé%ha4jfx::+/t61fiùra2j9*"
 }
 
+### get user info
+GET {{apiUrl}}/users
+
 ### création voyage
 POST {{apiUrl}}/voyages
 Content-Type: application/json
@@ -43,12 +46,13 @@ GET {{apiUrl}}/users/1/photos
 
 
 ### ajouter galerie
-POST {{apiUrl}}/users/1/photos
+PUT {{apiUrl}}/users/1/photos
 Content-Type: application/json
 
 {
-  "url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQN4RJTrFs8g2czpTEQSVxRj3TS8nJo3tYC_pdF_cu3Rbtls5iuPYoDCyhdt1yxLY6WStReFUkJT9B9gECNAJ_1U66gJ7ffFtiVxCb_Y_YC",
-  "description": "Photo de chien"
+  "galerie": [
+    "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQN4RJTrFs8g2czpTEQSVxRj3TS8nJo3tYC_pdF_cu3Rbtls5iuPYoDCyhdt1yxLY6WStReFUkJT9B9gECNAJ_1U66gJ7ffFtiVxCb_Y_YC"
+  ]
 } 
 
 ### liste documents par users
@@ -56,13 +60,14 @@ GET {{apiUrl}}/users/1/documents
 Authorization: Bearer {{token}}
 
 ### ajouter document
-POST {{apiUrl}}/users/1/documents
+PUT {{apiUrl}}/users/1/documents
 Content-Type: application/json
 
 {
-  "url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQN4RJTrFs8g2czpTEQSVxRj3TS8nJo3tYC_pdF_cu3Rbtls5iuPYoDCyhdt1yxLY6WStReFUkJT9B9gECNAJ_1U66gJ7ffFtiVxCb_Y_YC",
-  "description": "Document important"
-}
+  "documents": [
+    "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQN4RJTrFs8g2czpTEQSVxRj3TS8nJo3tYC_pdF_cu3Rbtls5iuPYoDCyhdt1yxLY6WStReFUkJT9B9gECNAJ_1U66gJ7ffFtiVxCb_Y_YC"
+  ]
+} 
 
 ### liste rdv
 GET {{apiUrl}}/rdv
