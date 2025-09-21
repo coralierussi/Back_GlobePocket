@@ -29,3 +29,26 @@ rdvRouter.post('/', checkToken, async (req: Request, res: Response) => {
     });
     res.json(rdv);
 });
+
+rdvRouter.put('/', checkToken, async (req: Request, res: Response) => {
+    const userId = req.userId;
+    const { date_rdv, heure, titre, mail } : { date_rdv: Date; heure: Date; titre: string; mail: string } = req.body; 
+    const rdv = await prisma.rendez_Vous.update({
+        where: { id : userId },
+        data: {
+            date_rdv,
+            heure,
+            titre,
+            mail
+        }
+    });
+    res.json(rdv);
+});
+
+rdvRouter.delete('/', checkToken, async (req: Request, res: Response) => {
+    const userId = req.body.userId;
+    const rdv = await prisma.rendez_Vous.delete({
+        where: { id: userId }
+    });
+    res.json(rdv);
+});

@@ -135,3 +135,19 @@ Authorization: Bearer {{token}}
   "titre": "Rendez-vous chez le médecin",
   "mail": "samohtegrofal@mds.com"
 }
+
+### suppression rdv
+DELETE {{apiUrl}}/rdv
+Authorization: Bearer {{token}}
+
+### Update rdv
+PUT {{apiUrl}}/rdv
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "date_rdv": "2024-12-20T10:00:00.000Z",
+  "heure": "2024-12-20T10:00:00.000Z",
+  "titre": "Rendez-vous chez le dentiste",
+  "mail": "samohtegrofal@mds.com"
+}
