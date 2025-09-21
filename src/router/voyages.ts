@@ -27,6 +27,13 @@ voyagesRouter.get('/', async (req: Request, res: Response) => {
   res.json(voyages);
 });
 
+voyagesRouter.delete('/', checkToken, async (req: Request, res: Response) => {
+  const userId = req.userId;
+  const voyage = await prisma.voyage.delete({
+    where: { id : userId }
+  });
+  res.json(voyage);
+});
 
 voyagesRouter.get('/user', checkToken, async (req: Request, res: Response) => {
   const voyages = await prisma.voyage.findMany({

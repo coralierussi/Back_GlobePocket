@@ -45,22 +45,52 @@ Authorization: Bearer {{token}}
   "compte_bancaire": 123456789
 }
 
+### liste voyages
+GET {{apiUrl}}/voyages
+Content-Type: application/json
+
 ### création voyage
 POST {{apiUrl}}/voyages
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "destination": "Tokyo",
-  "date_depart": "2024-12-20T00:00:00.000Z",
-  "date_retour": "2025-01-05T00:00:00.000Z",
-  "type": "Transports",
-  "prix": 3000
+  "destination": "Berlin",
+  "date_depart": "2024-08-20T00:00:00.000Z",
+  "date_retour": "2025-12-05T00:00:00.000Z",
+  "type": "Activites",
+  "prix": 2500,
 }
 
-### liste voyages
+# ### Delete voyage
+# DELETE {{apiUrl}}/voyages
+# Content-Type: application/json
+# Authorization: Bearer {{token}}
+
+# {
+#   "destination": "Berlin",
+#   "date_depart": "2024-08-20T00:00:00.000Z",
+#   "date_retour": "2025-12-05T00:00:00.000Z",
+#   "type": "Activites",
+#   "prix": 2500,
+# }
+
+### liste voyages par users
 GET {{apiUrl}}/voyages/user
 Authorization: Bearer {{token}}
+
+### delete voyage par users
+DELETE {{apiUrl}}/voyages/user
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "destination": "Berlin",
+  "date_depart": "2024-08-20T00:00:00.000Z",
+  "date_retour": "2025-12-05T00:00:00.000Z",
+  "type": "Activites",
+  "prix": 2500,
+}
 
 ### liste galerie par users
 GET {{apiUrl}}/users/1/photos
