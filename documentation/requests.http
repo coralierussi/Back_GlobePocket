@@ -1,6 +1,6 @@
 # Create a variable to store the url
 @apiUrl = http://localhost:1337/api
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc1ODI2ODA1NiwiZXhwIjoxNzU4MzU0NDU2fQ.qbSq6y32J9FwsEK9Ijwo4FmTj2k8yzu-BDmkFdVNXlg
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc1ODY0MjUxNiwiZXhwIjoxNzU4NzI4OTE2fQ.9tIueBSgKWII1yDikcyoGzeZfRoEWqbSZwTpcDe4RFI
 
 ### création compte
 POST {{apiUrl}}/auth/register
@@ -30,19 +30,17 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "email": "samohtegrofal@mds.com",
-  "mdp": "d467èé%ha4jfx::+/t61fiùra2j9*",
-  "name": "Sam",
-  "pseudo": "Sam",
-  "ville": "Paris",
+  "name": "Alex",
+  "pseudo": "tata",
+  "ville": "Grenoble",
   "pays": "France",
   "date_anniversaire": "2025-01-05T00:00:00.000Z",
-  "sexe": "Feminin",
+  "sexe": "Masculin",
   "galerie": [],
   "documents": [],
-  "description": "Hello everybody !",
-  "cp": 75000,
-  "compte_bancaire": 123456789
+  "description": "Bye !",
+  "cp": 38000,
+  "compte_bancaire": 782597234
 }
 
 ### liste voyages
@@ -59,21 +57,21 @@ Authorization: Bearer {{token}}
   "date_depart": "2024-08-20T00:00:00.000Z",
   "date_retour": "2025-12-05T00:00:00.000Z",
   "type": "Activites",
-  "prix": 2500,
+  "prix": 2500
 }
 
-# ### Delete voyage
-# DELETE {{apiUrl}}/voyages
-# Content-Type: application/json
-# Authorization: Bearer {{token}}
+### Delete voyage
+DELETE {{apiUrl}}/voyages
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
-# {
-#   "destination": "Berlin",
-#   "date_depart": "2024-08-20T00:00:00.000Z",
-#   "date_retour": "2025-12-05T00:00:00.000Z",
-#   "type": "Activites",
-#   "prix": 2500,
-# }
+{
+  "destination": "Berlin",
+  "date_depart": "2024-08-20T00:00:00.000Z",
+  "date_retour": "2025-12-05T00:00:00.000Z",
+  "type": "Activites",
+  "prix": 2500
+}
 
 ### liste voyages par users
 GET {{apiUrl}}/voyages/user
@@ -89,7 +87,7 @@ Authorization: Bearer {{token}}
   "date_depart": "2024-08-20T00:00:00.000Z",
   "date_retour": "2025-12-05T00:00:00.000Z",
   "type": "Activites",
-  "prix": 2500,
+  "prix": 2500
 }
 
 ### liste galerie par users
@@ -111,8 +109,9 @@ GET {{apiUrl}}/users/1/documents
 Authorization: Bearer {{token}}
 
 ### ajouter document
-PUT {{apiUrl}}/users/1/documents
+PUT {{apiUrl}}/users/documents
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "documents": [
