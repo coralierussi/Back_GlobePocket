@@ -17,8 +17,6 @@ userRouter.put('/', checkToken, async (req: Request, res: Response) => {
   const userId = req.userId;
   const {
           name,
-          email,
-          mdp,
           pseudo,
           ville,
           pays,
@@ -31,8 +29,6 @@ userRouter.put('/', checkToken, async (req: Request, res: Response) => {
           compte_bancaire
         }: {
           name: string;
-          email: string;
-          mdp: string;
           pseudo: string;
           ville: string;
           pays: string;
@@ -49,7 +45,6 @@ userRouter.put('/', checkToken, async (req: Request, res: Response) => {
     select: { id: true, 
       name: true, 
       email: true, 
-      mdp: true, 
       pseudo: true, 
       ville: true, 
       pays: true, 
@@ -63,8 +58,6 @@ userRouter.put('/', checkToken, async (req: Request, res: Response) => {
     },
     data: {
       name,
-      email,
-      mdp,
       pseudo,
       ville,
       pays,
@@ -81,12 +74,12 @@ userRouter.put('/', checkToken, async (req: Request, res: Response) => {
 });
 
 
-userRouter.get('/:userid/photos', async (req: Request, res: Response) => {
-  const userId = req.params.userid;
+userRouter.get('/photos', checkToken, async (req: Request, res: Response) => {
+  const userId = req.userId
   const param = await prisma.user.findUnique({
-    where: { id: parseInt(userId) },
+    where: { id: userId },
     select: { galerie: true }
-  });
+  });  
   res.json(param)
 })
 
@@ -111,11 +104,11 @@ userRouter.get('/:userid/documents', checkToken, async (req: Request, res: Respo
   res.json(param)
 })
 
-userRouter.put('/:userid/documents', async (req: Request, res: Response) => {
-  const userId = req.params.userid;
+userRouter.put('/documents', async (req: Request, res: Response) => {
+  const userId = req.userId;
   const { documents }: { documents: string[] } = req.body;
   const param = await prisma.user.update({
-    where: { id: parseInt(userId) },
+    where: { id: userId },
     select: { documents: true },
     data: { documents }
   });
