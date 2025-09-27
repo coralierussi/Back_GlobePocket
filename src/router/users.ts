@@ -95,10 +95,10 @@ userRouter.put('/photos', checkToken, async (req: Request, res: Response) => {
   res.json(param)
 })
 
-userRouter.get('/:userid/documents', checkToken, async (req: Request, res: Response) => {
-  const userId = req.params.userid;
+userRouter.get('/documents', checkToken, async (req: Request, res: Response) => {
+  const userId = req.userId;
   const param = await prisma.user.findUnique({
-    where: { id: parseInt(userId) },
+    where: { id: userId },
     select: { documents: true }
   });
   res.json(param)
