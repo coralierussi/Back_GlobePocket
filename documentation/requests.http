@@ -7,9 +7,9 @@ POST {{apiUrl}}/auth/register
 Content-Type: application/json
  
 {
-  "email": "samohtegrofal@mds.com",
-  "mdp": "d467èé%ha4jfx::+/t61fiùra2j9*",
-  "name": "toto"
+  "email": "coralie.russi@orange.fr",
+  "mdp": "Essai1234%",
+  "name": "Lili"
 }
 
 ### login
@@ -17,8 +17,8 @@ POST {{apiUrl}}/auth/login
 Content-Type: application/json
 
 {
-  "email": "samohtegrofal@mds.com",
-  "mdp": "d467èé%ha4jfx::+/t61fiùra2j9*"
+  "email": "coralie.russi@orange.fr",
+  "mdp": "Essai1234%"
 }
 
 ### get user info
