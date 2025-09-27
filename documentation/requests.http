@@ -105,7 +105,7 @@ Content-Type: application/json
 } 
 
 ### liste documents par users
-GET {{apiUrl}}/users/1/documents
+GET {{apiUrl}}/users/documents
 Authorization: Bearer {{token}}
 
 ### ajouter document
@@ -115,7 +115,7 @@ Authorization: Bearer {{token}}
 
 {
   "documents": [
-    "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQN4RJTrFs8g2czpTEQSVxRj3TS8nJo3tYC_pdF_cu3Rbtls5iuPYoDCyhdt1yxLY6WStReFUkJT9B9gECNAJ_1U66gJ7ffFtiVxCb_Y_YC"
+    "https://www.google.com/imgres?q=image&imgurl=https%3A%2F%2Fletsenhance.io%2Fstatic%2F73136da51c245e80edc6ccfe44888a99%2F396e9%2FMainBefore.jpg&imgrefurl=https%3A%2F%2Fletsenhance.io%2Ffr&docid=wlp6cqxXLJM57M&tbnid=g8Tzlw0sX4Aj_M&vet=12ahUKEwj3ppOg0faPAxXdKvsDHcOPG9kQM3oECBwQAA..i&w=1280&h=720&hcb=2&ved=2ahUKEwj3ppOg0faPAxXdKvsDHcOPG9kQM3oECBwQAA"
   ]
 } 
 
