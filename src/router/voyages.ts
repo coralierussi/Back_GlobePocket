@@ -38,7 +38,7 @@ voyagesRouter.delete('/', checkToken, async (req: Request, res: Response) => {
 voyagesRouter.get('/users', checkToken, async (req: Request, res: Response) => {
   const voyages = await prisma.voyage.findMany({
     where: {
-        participants: {
+        favoris: {
             some: { id: req.userId }
         }
     }
