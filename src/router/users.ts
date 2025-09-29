@@ -12,6 +12,24 @@ userRouter.get("/", async (req: Request, res: Response) => {
   res.json(users);
 });
 
+// Get user info
+userRouter.get('/me', checkToken, async (req: Request, res: Response) => {
+  const userId = req.userId;
+
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+  });
+
+  if (!user) {
+    return res.status(404).json({ message: 'Utilisateur non trouvé.' });
+  }
+
+  // remove mdp from user object
+  const { mdp, ...userWithoutPassword } = user;
+
+  res.json(userWithoutPassword);
+})
+
 // Update user info
 userRouter.put('/', checkToken, async (req: Request, res: Response) => {
   const userId = req.userId;
