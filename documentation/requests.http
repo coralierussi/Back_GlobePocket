@@ -155,3 +155,12 @@ Authorization: Bearer {{token}}
 GET {{apiUrl}}/user_favoris
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
+### ajout favoris
+POST {{apiUrl}}/user_favoris
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "voyageId": 1
+}
