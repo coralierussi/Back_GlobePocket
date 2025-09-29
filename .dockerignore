@@ -1,0 +1,6 @@
+node_modules
+.husky
+dist
+documentation
+Dockerfile
+.dockerignore
