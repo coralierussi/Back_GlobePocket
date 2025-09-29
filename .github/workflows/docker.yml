@@ -6,17 +6,17 @@ on:
       - main
  
 jobs:
-    - name: checkout
-      uses: actions/checkout@v2
-      
-    - name: Build
-      run: docker buildx build -t ${{ secrets.DOCKERHUB_USERNAME }}/back-globe-pocket:latest .
- 
-    - name: login
-      use: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+  - name: checkout
+    uses: actions/checkout@v2
     
-    - name: push
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/back-globe-pocket:latest
+  - name: Build
+    run: docker buildx build -t ${{ secrets.DOCKERHUB_USERNAME }}/back-globe-pocket:latest .
+
+  - name: login
+    use: docker/login-action@v1
+    with:
+      username: ${{ secrets.DOCKERHUB_USERNAME }}
+      password: ${{ secrets.DOCKERHUB_TOKEN }}
+  
+  - name: push
+    run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/back-globe-pocket:latest
