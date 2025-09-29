@@ -65,7 +65,7 @@ model User {
   // Relations
   reservations    Reservation[]
   avis            Avis[]
-  voyages         User_Voyage[]
+  voyages         User_Favoris[]
   messages        Message[]
   reactions       Reaction[]
   membres_equipes Membre_Equipe[]
@@ -97,7 +97,7 @@ model Voyage {
   // Relations
   reservations Reservation[]
   avis         Avis[]
-  participants User_Voyage[]
+  favoris User_Favoris[]
 }
 
 model Avis {
@@ -115,9 +115,8 @@ model Avis {
   voyage Voyage @relation(fields: [voyageId], references: [id])
 }
 
-model User_Voyage {
+model User_Favoris {
   id         Int     @id @default(autoincrement())
-  coup_coeur Boolean @default(false)
 
   // Foreign Keys
   userId   Int
