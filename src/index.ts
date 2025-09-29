@@ -1,5 +1,6 @@
 import express, { Router } from 'express';
 import { userRouter } from './router/users';
+import { userFavorisRouter } from './router/user_favoris';
 import { authRouter } from './router/auth';
 import { voyagesRouter } from './router/voyages';
 import { rdvRouter } from './router/rdv';
@@ -19,6 +20,7 @@ apiRouter.use('/users', userRouter);
 apiRouter.use('/auth', authRouter);
 apiRouter.use('/voyages', voyagesRouter);
 apiRouter.use('/rdv', rdvRouter);
+apiRouter.use('/user_favoris', userFavorisRouter);
 
 app.use('/api', apiRouter);
 
