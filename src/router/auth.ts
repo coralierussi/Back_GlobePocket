@@ -11,7 +11,6 @@ const prisma = new PrismaClient();
 authRouter.post('/login', async (req: Request, res: Response) => {
   const { email, mdp }: { email: string; mdp: string } = req.body;
 
-  const hashedPassword = await bcrypt.hash(mdp, process.env.SALT_ROUNDS ? parseInt(process.env.SALT_ROUNDS) : 10);
   
   try {
     const user = await prisma.user.findUnique({ where: { email } });
