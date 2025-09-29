@@ -7,9 +7,9 @@ POST {{apiUrl}}/auth/register
 Content-Type: application/json
  
 {
-  "email": "coralie.russi@orange.fr",
-  "mdp": "Essai1234%",
-  "name": "Lili"
+  "email": "coralierussi@gmail.com",
+  "mdp": "4567Test",
+  "name": "Coralie"
 }
 
 ### login
@@ -17,8 +17,8 @@ POST {{apiUrl}}/auth/login
 Content-Type: application/json
 
 {
-  "email": "coralie.russi@orange.fr",
-  "mdp": "Essai1234%"
+  "email": "coralierussi@gmail.com",
+  "mdp": "4567Test"
 }
 
 ### get user info
