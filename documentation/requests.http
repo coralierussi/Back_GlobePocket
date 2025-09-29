@@ -150,3 +150,8 @@ Authorization: Bearer {{token}}
   "titre": "Rendez-vous chez le dentiste",
   "mail": "samohtegrofal@mds.com"
 }
+
+### liste favoris
+GET {{apiUrl}}/user_favoris
+Content-Type: application/json
+Authorization: Bearer {{token}}
