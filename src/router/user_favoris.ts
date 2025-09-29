@@ -14,3 +14,22 @@ userFavorisRouter.get("/", checkToken, async (req: Request, res: Response) => {
   console.log("Favoris de l'utilisateur affichés");
   res.json(userFavoris);
 });
+
+// Add a favoris
+userFavorisRouter.post("/", checkToken, async (req: Request, res: Response) => {
+  const userId = req.userId;
+  const { voyageId }: { voyageId: number } = req.body;
+
+  if (typeof userId !== 'number') {
+    return res.status(400).json({ error: "Invalid or missing userId" });
+  }
+
+  const newFavoris = await prisma.user_Favoris.create({
+    data: {
+      userId,
+      voyageId
+    }
+  });
+
+  res.status(201).json(newFavoris);
+});
