@@ -164,3 +164,7 @@ Authorization: Bearer {{token}}
 {
   "voyageId": 1
 }
+
+### suppression favoris
+DELETE {{apiUrl}}/user_favoris/1
+Authorization: Bearer {{token}}

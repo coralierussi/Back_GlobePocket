@@ -33,3 +33,27 @@ userFavorisRouter.post("/", checkToken, async (req: Request, res: Response) => {
 
   res.status(201).json(newFavoris);
 });
+
+// Delete favori
+userFavorisRouter.delete("/:voyageId", checkToken, async (req: Request, res: Response) => {
+  const userId = req.userId;
+  const { voyageId } = req.params;
+
+  if (typeof userId !== 'number') {
+    return res.status(400).json({ error: "Invalid or missing userId" });
+  }
+
+  try {
+    await prisma.user_Favoris.delete({
+      where: {
+        userId_voyageId: { // Assurez-vous que cela correspond à votre schéma Prisma
+          userId: userId,
+          voyageId: parseInt(voyageId, 10),
+        },
+      },
+    });
+    res.status(204).send(); // 204 No Content - succès sans rien à renvoyer
+  } catch (error) {
+    res.status(500).json({ error: "Error deleting favorite" });
+  }
+});
