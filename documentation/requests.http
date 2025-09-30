@@ -167,4 +167,5 @@ Authorization: Bearer {{token}}
 
 ### suppression favoris
 DELETE {{apiUrl}}/user_favoris/1
+Content-Type: application/json
 Authorization: Bearer {{token}}
