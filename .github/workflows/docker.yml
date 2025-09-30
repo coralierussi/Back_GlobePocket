@@ -24,3 +24,5 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/back-globe-pocket:latest
+      - name: Trigger Render Deployment
+        run: curl -X GET ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
