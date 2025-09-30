@@ -1,6 +1,6 @@
 # Create a variable to store the url
 @apiUrl = http://localhost:1337/api
-@token =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsImlhdCI6MTc1OTEyNjk3MSwiZXhwIjoxNzU5MjEzMzcxfQ.7y0nKW4jIrzdESRQYKMSWsoVocDHyR4s0EOO_W1RHZ4
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTc1OTIxNTM4MSwiZXhwIjoxNzU5MzAxNzgxfQ.HZI3g3vHPq0WFnAtd038h6xCvpv8RedoYM8AqNMafcc
 
 ### création compte
 POST {{apiUrl}}/auth/register
