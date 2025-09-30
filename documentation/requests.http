@@ -1,7 +1,6 @@
 # Create a variable to store the url
 @apiUrl = http://localhost:1337/api
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTc1OTIxNTM4MSwiZXhwIjoxNzU5MzAxNzgxfQ.HZI3g3vHPq0WFnAtd038h6xCvpv8RedoYM8AqNMafcc
-
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTc1OTIyNzI3MywiZXhwIjoxNzU5MzEzNjczfQ.CubySDWSMKuCvhb6Ph606vayI9WIGBXI_tofwWHR9m8
 ### création compte
 POST {{apiUrl}}/auth/register
 Content-Type: application/json
@@ -23,6 +22,10 @@ Content-Type: application/json
 
 ### get user info
 GET {{apiUrl}}/users
+
+### get user info
+GET {{apiUrl}}/users/me
+Authorization: Bearer {{token}}
 
 ### update user info
 PUT {{apiUrl}}/users
@@ -92,11 +95,13 @@ Authorization: Bearer {{token}}
 
 ### liste galerie par users
 GET {{apiUrl}}/users/1/photos
+Authorization: Bearer {{token}}
 
 
 ### ajouter galerie
 PUT {{apiUrl}}/users/1/photos
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "galerie": [
