@@ -1,7 +1,7 @@
 # Create a variable to store the url
 @apiUrl = https://back-globe-pocket-latest.onrender.com/api
 # @apiUrl = http://localhost:1337/api
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTc1OTIyNzI3MywiZXhwIjoxNzU5MzEzNjczfQ.CubySDWSMKuCvhb6Ph606vayI9WIGBXI_tofwWHR9m8
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTc1OTI5ODU3OSwiZXhwIjoxNzU5Mzg0OTc5fQ.MJV_9oq443FhmuzUO7Y10YtBhXq_ZiGt85CtRcNnEJY
 ### création compte
 POST {{apiUrl}}/auth/register
 Content-Type: application/json
