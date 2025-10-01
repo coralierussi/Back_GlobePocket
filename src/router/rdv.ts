@@ -5,23 +5,22 @@ export const rdvRouter = express.Router();
 // rdvRouter.use(checkToken)
 const prisma = new PrismaClient();
 
-rdvRouter.get('/', checkToken, async (req: Request, res: Response) => {
-    const rdvs = await prisma.rendez_Vous.findMany({
-        where: {
-            userId: req.userId
-        }
-    });
-    res.json(rdvs);
-});
+// rdvRouter.get('/', checkToken, async (req: Request, res: Response) => {
+//     const rdvs = await prisma.rendez_Vous.findMany({
+//         where: {
+//             userId: req.userId
+//         }
+//     });
+//     res.json(rdvs);
+// });
 
 rdvRouter.post('/', checkToken, async (req: Request, res: Response) => {
-    const { date_rdv, heure, titre, mail } : { date_rdv: Date; heure: Date; titre: string; mail: string } = req.body; 
+    const { date_rdv, heure, titre } : { date_rdv: Date; heure: Date; titre: string; } = req.body; 
     const rdv = await prisma.rendez_Vous.create({
         data: {
             date_rdv,
             heure,
             titre,
-            mail,
             user: {
                 connect: { id: req.userId }
             }
@@ -38,8 +37,7 @@ rdvRouter.put('/', checkToken, async (req: Request, res: Response) => {
         data: {
             date_rdv,
             heure,
-            titre,
-            mail
+            titre
         }
     });
     res.json(rdv);

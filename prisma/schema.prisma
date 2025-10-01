@@ -47,7 +47,6 @@ enum Type_Appel {
 model User {
   id                Int       @id @default(autoincrement())
   cp                Int?
-  compte_bancaire   Int?
   name              String
   email             String    @unique
   mdp               String
@@ -76,7 +75,6 @@ model Rendez_Vous {
   date_rdv   DateTime
   heure      DateTime
   titre      String
-  mail       String
 
   // Foreign Key
   userId Int

@@ -1,7 +1,7 @@
 # Create a variable to store the url
 @apiUrl = https://back-globe-pocket-latest.onrender.com/api
 # @apiUrl = http://localhost:1337/api
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTc1OTI5ODU3OSwiZXhwIjoxNzU5Mzg0OTc5fQ.MJV_9oq443FhmuzUO7Y10YtBhXq_ZiGt85CtRcNnEJY
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTc1OTM0NjU5NCwiZXhwIjoxNzU5NDMyOTk0fQ.dQ87dQS6ckxMNZ5VhHf86btcpihfh_B8Hz-gidodX5k
 ### création compte
 POST {{apiUrl}}/auth/register
 Content-Type: application/json
@@ -43,8 +43,7 @@ Authorization: Bearer {{token}}
   "galerie": [],
   "documents": [],
   "description": "Bye !",
-  "cp": 38000,
-  "compte_bancaire": 782597234
+  "cp": 38000
 }
 
 ### liste voyages
@@ -137,8 +136,7 @@ Authorization: Bearer {{token}}
 {
   "date_rdv": "2024-12-15T10:00:00.000Z",
   "heure": "2024-12-15T10:00:00.000Z",
-  "titre": "Rendez-vous chez le médecin",
-  "mail": "samohtegrofal@mds.com"
+  "titre": "Rendez-vous chez le médecin"
 }
 
 ### suppression rdv
@@ -153,8 +151,7 @@ Authorization: Bearer {{token}}
 {
   "date_rdv": "2024-12-20T10:00:00.000Z",
   "heure": "2024-12-20T10:00:00.000Z",
-  "titre": "Rendez-vous chez le dentiste",
-  "mail": "samohtegrofal@mds.com"
+  "titre": "Rendez-vous chez le dentiste"
 }
 
 ### liste favoris

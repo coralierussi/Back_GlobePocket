@@ -43,8 +43,7 @@ userRouter.put('/', checkToken, async (req: Request, res: Response) => {
           galerie,
           documents,
           description,
-          cp,
-          compte_bancaire
+          cp
         }: {
           name: string;
           pseudo: string;
@@ -55,8 +54,7 @@ userRouter.put('/', checkToken, async (req: Request, res: Response) => {
           galerie: string[];
           documents: string[];
           description: string;
-          cp: number;
-          compte_bancaire: number;
+          cp: number
         } = req.body;
   const param = await prisma.user.update({
     where: { id: userId },
@@ -71,8 +69,7 @@ userRouter.put('/', checkToken, async (req: Request, res: Response) => {
       galerie: true, 
       documents: true, 
       description: true, 
-      cp: true, 
-      compte_bancaire: true 
+      cp: true
     },
     data: {
       name,
@@ -84,8 +81,7 @@ userRouter.put('/', checkToken, async (req: Request, res: Response) => {
       galerie,
       documents,
       description,
-      cp,
-      compte_bancaire
+      cp
     }
   });
   res.json(param)
