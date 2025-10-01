@@ -5,7 +5,7 @@
 ### création compte
 POST {{apiUrl}}/auth/register
 Content-Type: application/json
- 
+
 {
   "email": "coralierussi@gmail.com",
   "mdp": "4567Test",
