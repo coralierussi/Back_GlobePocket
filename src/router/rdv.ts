@@ -2,17 +2,17 @@ import express, { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 import { checkToken } from '../middlewares/checkToken';
 export const rdvRouter = express.Router();
-
+// rdvRouter.use(checkToken)
 const prisma = new PrismaClient();
 
-rdvRouter.get('/', checkToken, async (req: Request, res: Response) => {
-    const rdvs = await prisma.rendez_Vous.findMany({
-        where: {
-            userId: req.userId
-        }
-    });
-    res.json(rdvs);
-});
+// rdvRouter.get('/', checkToken, async (req: Request, res: Response) => {
+//     const rdvs = await prisma.rendez_Vous.findMany({
+//         where: {
+//             userId: req.userId
+//         }
+//     });
+//     res.json(rdvs);
+// });
 
 rdvRouter.post('/', checkToken, async (req: Request, res: Response) => {
     const { date_rdv, heure, titre, mail } : { date_rdv: Date; heure: Date; titre: string; mail: string } = req.body; 
