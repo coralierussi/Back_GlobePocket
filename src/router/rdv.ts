@@ -5,14 +5,14 @@ export const rdvRouter = express.Router();
 // rdvRouter.use(checkToken)
 const prisma = new PrismaClient();
 
-// rdvRouter.get('/', checkToken, async (req: Request, res: Response) => {
-//     const rdvs = await prisma.rendez_Vous.findMany({
-//         where: {
-//             userId: req.userId
-//         }
-//     });
-//     res.json(rdvs);
-// });
+rdvRouter.get('/', checkToken, async (req: Request, res: Response) => {
+    const rdvs = await prisma.rendez_Vous.findMany({
+        where: {
+            userId: req.userId
+        }
+    });
+    res.json(rdvs);
+});
 
 rdvRouter.post('/', checkToken, async (req: Request, res: Response) => {
     const { date_rdv, heure, titre } : { date_rdv: Date; heure: Date; titre: string; } = req.body; 
